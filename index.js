@@ -44,8 +44,9 @@ class wvveskit {
 
     const step = this.steps[index];
     this.container.innerHTML = `
+    
       <h3 style="margin: 0 0 10px 0;">${step.title}</h3>
-      <p style="margin: 50px 0 50px 0;">${step.content}</p>
+      <p style="margin: 50px 0 50px 0; font-size: 34px; line-height: 1.15;">${step.content}</p>
       <div style="display: flex; justify-content: space-between;">
         <button class="wvves-prev-btn" style="padding: 10px; border-radius: 12px; border: 1px solid #ccc; background: rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:17px; height: 17px;">
@@ -53,7 +54,7 @@ class wvveskit {
           </svg>
         </button>
         <span>${index + 1} / ${this.steps.length}</span>
-        <button class="wvves-next-btn">
+        <button class="wvves-next-btn" style="padding: 10px; border-radius: 12px; border: 1px solid #ccc; background: rgba(0, 0, 0, 0.1); display: flex; align-items: center; justify-content: center;">
           ${index === this.steps.length - 1 ? 'Finish' : 'Next'}
         </button>
       </div>
