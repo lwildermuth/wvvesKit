@@ -1,4 +1,4 @@
-class StepThroughModal {
+class wvveskit {
   constructor(options = {}) {
     this.steps = options.steps || [];
     this.currentStep = 0;
@@ -38,14 +38,14 @@ class StepThroughModal {
       <h3 style="margin: 0 0 10px 0;">${step.title}</h3>
       <p style="margin: 0 0 15px 0;">${step.content}</p>
       <div style="display: flex; justify-content: space-between;">
-        <button class="prev-btn">Previous</button>
+        <button class="wvves-prev-btn">Previous</button>
         <span>${index + 1} / ${this.steps.length}</span>
-        <button class="next-btn">${index === this.steps.length - 1 ? 'Finish' : 'Next'}</button>
+        <button class="wvves-next-btn">${index === this.steps.length - 1 ? 'Finish' : 'Next'}</button>
       </div>
     `;
 
-    this.container.querySelector('.next-btn').onclick = () => this.next();
-    this.container.querySelector('.prev-btn').onclick = () => this.prev();
+    this.container.querySelector('.wvves-next-btn').onclick = () => this.next();
+    this.container.querySelector('.wvves-prev-btn').onclick = () => this.prev();
   }
 
   next() {
@@ -65,4 +65,4 @@ class StepThroughModal {
   }
 }
 
-module.exports = StepThroughModal;
+module.exports = wvveskit;
