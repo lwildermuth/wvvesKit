@@ -1,0 +1,21 @@
+{
+  "name": "wvveskit",
+  "version": "1.0.0",
+  "description": "A lightweight modal step-through component for guiding users",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "wvveskit"
+  },
+  "keywords": [
+    "modal",
+    "popup",
+    "tutorial",
+    "onboarding"
+  ],
+  "author": "depthdev",
+  "license": "ISC"
+}
