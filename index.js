@@ -79,7 +79,6 @@ class wvveskit {
 
       .wvves-option {
         padding: 14px 20px;
-        margin: 10px 0;
         border-radius: var(--wvves-btn-radius);
         background: var(--wvves-btn-bg);
         color: var(--wvves-text);
@@ -102,15 +101,6 @@ class wvveskit {
         background: var(--wvves-text);
         color: var(--wvves-bg);
         transform: translateY(-1px);
-      }
-
-      .wvves-option.selected::after {
-        content: '✓';
-        position: absolute;
-        top: 8px;
-        right: 12px;
-        font-size: 16px;
-        font-weight: bold;
       }
     `;
     document.head.appendChild(style);
@@ -171,9 +161,9 @@ class wvveskit {
         </svg>
         <span style="font-size: 20px;">${step.title}</span>
       </div>
-      <div style="margin: 50px 0;">
+      <div style="margin: 100px 0;">
         <p style="font-size: 34px; line-height: 1.15; margin: 0 0 10px 0;">${step.content}</p>
-        <div style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
+        <div style="display: flex; align-items: center; justify-content: flex-start; flex-wrap: wrap; gap: 10px;">
           ${optionsHtml}
         </div>
       </div>
