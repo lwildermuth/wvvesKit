@@ -67,6 +67,15 @@ class wvveskit {
         height: 17px;
         color: var(--wvves-text);
       }
+
+      .wvves-close-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -106,7 +115,7 @@ class wvveskit {
 
     const step = this.steps[index];
     this.container.innerHTML = `
-      <div>
+      <div class="wvves-btn wvves-close-btn">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
         </svg>
