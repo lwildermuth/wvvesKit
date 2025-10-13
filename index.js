@@ -3,6 +3,7 @@ class wvveskit {
     this.steps = options.steps || [];
     this.currentStep = 0;
     this.container = null;
+    this.selectedOptions = {}; // Store selected options by step index
     this.theme = {
       backgroundColor: '#ffffff',
       textColor: '#333333',
@@ -75,6 +76,47 @@ class wvveskit {
         border: none;
         cursor: pointer;
       }
+
+      .wvves-option {
+        padding: 14px 20px;
+        margin: 10px 0;
+        border: 2px solid var(--wvves-border);
+        border-radius: var(--wvves-btn-radius);
+        background: var(--wvves-btn-bg);
+        color: var(--wvves-text);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: block;
+        text-align: center;
+        font-weight: 500;
+        font-size: 15px;
+        position: relative;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      }
+
+      .wvves-option:hover {
+        background: var(--wvves-btn-hover-bg);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        border-color: var(--wvves-text);
+      }
+
+      .wvves-option.selected {
+        background: var(--wvves-text);
+        color: var(--wvves-bg);
+        border-color: var(--wvves-text);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      }
+
+      .wvves-option.selected::after {
+        content: '✓';
+        position: absolute;
+        top: 8px;
+        right: 12px;
+        font-size: 16px;
+        font-weight: bold;
+      }
     `;
     document.head.appendChild(style);
   }
@@ -113,6 +155,15 @@ class wvveskit {
     }
 
     const step = this.steps[index];
+    const optionsHtml = step.options ? step.options.map((option, optionIndex) => {
+      const isSelected = this.selectedOptions[index]?.includes(optionIndex);
+      return `
+        <div class="wvves-option ${isSelected ? 'selected' : ''}" data-option-index="${optionIndex}">
+          ${option.text || option}
+        </div>
+      `;
+    }).join('') : '';
+
     this.container.innerHTML = `
       <div class="wvves-btn wvves-close-btn">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -125,8 +176,9 @@ class wvveskit {
         </svg>
         <span style="font-size: 20px;">${step.title}</span>
       </div>
-      <p style="margin: 50px 0 50px 0; font-size: 34px; line-height: 1.15;">${step.content}</p>
-      <div style="display: flex; justify-content: space-between;">
+      <p style="margin: 20px 0; font-size: 16px; line-height: 1.4;">${step.content}</p>
+      ${optionsHtml}
+      <div style="display: flex; justify-content: space-between; margin-top: 20px;">
         <button class="wvves-prev-btn wvves-btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
@@ -141,6 +193,13 @@ class wvveskit {
 
     this.container.querySelector('.wvves-next-btn').onclick = () => this.next();
     this.container.querySelector('.wvves-prev-btn').onclick = () => this.prev();
+    this.container.querySelector('.wvves-close-btn').onclick = () => this.close();
+
+    // Add option selection handlers
+    const options = this.container.querySelectorAll('.wvves-option');
+    options.forEach(optionEl => {
+      optionEl.onclick = () => this.toggleOption(index, parseInt(optionEl.dataset.optionIndex));
+    });
   }
 
   next() {
@@ -151,6 +210,28 @@ class wvveskit {
     if (this.currentStep > 0) {
       this.showStep(--this.currentStep);
     }
+  }
+
+  toggleOption(stepIndex, optionIndex) {
+    if (!this.selectedOptions[stepIndex]) {
+      this.selectedOptions[stepIndex] = [];
+    }
+
+    const selectedArray = this.selectedOptions[stepIndex];
+    const existingIndex = selectedArray.indexOf(optionIndex);
+
+    if (existingIndex > -1) {
+      selectedArray.splice(existingIndex, 1);
+    } else {
+      selectedArray.push(optionIndex);
+    }
+
+    // Re-render current step to update UI
+    this.showStep(this.currentStep);
+  }
+
+  getSelectedOptions() {
+    return this.selectedOptions;
   }
 
   close() {

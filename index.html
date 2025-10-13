@@ -25,6 +25,7 @@
     <h1>wvvesKit Testing</h1>
     <p>This is a test page for developing the modal component.</p>
     <button onclick="startModal()">Launch Modal</button>
+    <button onclick="showSelectedOptions()">Show Selected Options</button>
 
     <script src="index.js"></script>
     <script>
@@ -32,16 +33,32 @@
             const modal = new wvveskit({
                 steps: [
                     {
-                        title: 'Welcome to wvvesKit!',
-                        content: 'This is your first step in the tutorial.'
+                        title: 'Welcome to Your Travel Assistant!',
+                        content: 'Let\'s help you plan the perfect trip.'
                     },
                     {
-                        title: 'Step 2',
-                        content: 'Here you can explain a feature or guide users.'
+                        title: 'Ready to dive into some options?',
+                        content: 'Ready to dive into some hotel options or maybe an itinerary?',
+                        options: [
+                            'Hotel Options',
+                            'Things to Do',
+                            'Itinerary'
+                        ]
                     },
                     {
-                        title: 'Final Step',
-                        content: 'Thanks for trying wvvesKit!'
+                        title: 'What\'s your travel style?',
+                        content: 'Pick what matters most for your trip:',
+                        options: [
+                            'Budget-friendly stays',
+                            'Luxury experiences',
+                            'Adventure activities',
+                            'Cultural attractions',
+                            'Food & dining'
+                        ]
+                    },
+                    {
+                        title: 'Perfect!',
+                        content: 'We\'ll customize your travel recommendations based on your selections!'
                     }
                 ],
                 theme: {
@@ -55,6 +72,17 @@
                 }
             });
             modal.init();
+
+            // Store modal reference globally for demo
+            window.currentModal = modal;
+        }
+
+        function showSelectedOptions() {
+            if (window.currentModal) {
+                const selected = window.currentModal.getSelectedOptions();
+                console.log('Selected Options:', selected);
+                alert('Check console for selected options: ' + JSON.stringify(selected, null, 2));
+            }
         }
     </script>
 </body>
