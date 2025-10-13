@@ -23,8 +23,17 @@ class wvveskit {
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
       padding: 20px;
       z-index: 9999;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease-out, transform 0.3s ease-out;
     `;
     document.body.appendChild(this.container);
+
+    // Trigger animation on next frame
+    requestAnimationFrame(() => {
+      this.container.style.opacity = '1';
+      this.container.style.transform = 'translateY(0)';
+    });
   }
 
   showStep(index) {
@@ -66,7 +75,16 @@ class wvveskit {
 
   close() {
     if (this.container) {
-      this.container.remove();
+      // Animate out
+      this.container.style.opacity = '0';
+      this.container.style.transform = 'translateY(20px)';
+
+      // Remove after animation completes
+      setTimeout(() => {
+        if (this.container) {
+          this.container.remove();
+        }
+      }, 300);
     }
   }
 }
