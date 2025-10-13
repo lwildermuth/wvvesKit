@@ -80,7 +80,6 @@ class wvveskit {
       .wvves-option {
         padding: 14px 20px;
         margin: 10px 0;
-        border: 2px solid var(--wvves-border);
         border-radius: var(--wvves-btn-radius);
         background: var(--wvves-btn-bg);
         color: var(--wvves-text);
@@ -91,22 +90,18 @@ class wvveskit {
         font-weight: 500;
         font-size: 15px;
         position: relative;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       }
 
       .wvves-option:hover {
         background: var(--wvves-btn-hover-bg);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        transform: translateY(-1px);
         border-color: var(--wvves-text);
       }
 
       .wvves-option.selected {
         background: var(--wvves-text);
         color: var(--wvves-bg);
-        border-color: var(--wvves-text);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transform: translateY(-1px);
       }
 
       .wvves-option.selected::after {
@@ -176,8 +171,12 @@ class wvveskit {
         </svg>
         <span style="font-size: 20px;">${step.title}</span>
       </div>
-      <p style="margin: 20px 0; font-size: 16px; line-height: 1.4;">${step.content}</p>
-      ${optionsHtml}
+      <div style="margin: 50px 0;">
+        <p style="font-size: 34px; line-height: 1.15; margin: 0 0 10px 0;">${step.content}</p>
+        <div style="display: flex; align-items: center; justify-content: flex-start; gap: 10px;">
+          ${optionsHtml}
+        </div>
+      </div>
       <div style="display: flex; justify-content: space-between; margin-top: 20px;">
         <button class="wvves-prev-btn wvves-btn">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
