@@ -31,19 +31,28 @@
         function startModal() {
             const modal = new wvveskit({
                 steps: [
-                    { 
-                        title: 'Welcome to wvvesKit!', 
-                        content: 'This is your first step in the tutorial.' 
+                    {
+                        title: 'Welcome to wvvesKit!',
+                        content: 'This is your first step in the tutorial.'
                     },
-                    { 
-                        title: 'Step 2', 
-                        content: 'Here you can explain a feature or guide users.' 
+                    {
+                        title: 'Step 2',
+                        content: 'Here you can explain a feature or guide users.'
                     },
-                    { 
-                        title: 'Final Step', 
-                        content: 'Thanks for trying wvvesKit!' 
+                    {
+                        title: 'Final Step',
+                        content: 'Thanks for trying wvvesKit!'
                     }
-                ]
+                ],
+                theme: {
+                    backgroundColor: '#f8f9fa',
+                    textColor: '#212529',
+                    buttonBg: '#e9ecef',
+                    buttonHoverBg: '#dee2e6',
+                    borderColor: '#adb5bd',
+                    borderRadius: '12px',
+                    buttonRadius: '8px'
+                }
             });
             modal.init();
         }
