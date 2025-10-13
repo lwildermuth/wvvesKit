@@ -38,8 +38,8 @@ class wvveskit {
       <h3 style="margin: 0 0 10px 0;">${step.title}</h3>
       <p style="margin: 50px 0 50px 0;">${step.content}</p>
       <div style="display: flex; justify-content: space-between;">
-        <button class="wvves-prev-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <button class="wvves-prev-btn" style="padding: 10px; border-radius: 12px; border: 1px solid #ccc; background: rgba(0, 0, 0, 0.1);">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width:20px; height: 20px;">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
           </svg>
         </button>
