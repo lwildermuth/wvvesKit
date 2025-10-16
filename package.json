@@ -1,5 +1,5 @@
 {
-  "name": "wvveskit",
+  "name": "@lwildermuth/wvveskit",
   "version": "1.0.1",
   "description": "A lightweight modal step-through component for guiding users",
   "main": "index.js",
@@ -9,6 +9,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lwildermuth/wvvesKit.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "modal",
